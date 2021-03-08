@@ -37,7 +37,7 @@ public class E02SilsuType {
 		-형변환도 가능하지만 Java에서는 권장하지 않는다.;
 		 */
 		
-//		float f4 = 3.14; ->에러발생] 3.14 자체를 double형으로 인식함.;
+//		float f4 = 3.14f;// ->에러발생] 3.14 자체를 double형으로 인식함.;
 		float f4 = (float)3.14;//형변환 후 대입 가능(권장사항 아님)
 		System.out.println("f4 = " + f4);
 		
