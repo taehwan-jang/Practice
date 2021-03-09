@@ -23,9 +23,27 @@ public class Qu_04_03 {
 		System.out.print("수학 : ");
 		int mNum = scanner.nextInt();
 		
-		double avg = (kNum + eNum + mNum) / 3.0;
+		double avg = (kNum + eNum + mNum) / 3;
 		System.out.printf("평균점수 : %.2f%n",  avg);
 		
+		int iavg = (int)avg;
+		
+		switch(iavg/10) { //만약에 91, 81, 71, 61 기준이라 한다면 iavg-1 하면 해결;
+		case 9:
+			System.out.println("A학점");
+			break;
+		case 8:
+			System.out.println("B학점");
+			break;
+		case 7:
+			System.out.println("C학점");
+			break;
+		case 6:
+			System.out.println("D학점");
+			break;
+		default:
+			System.out.println("F학점");
+		}
 		
 
 	}
