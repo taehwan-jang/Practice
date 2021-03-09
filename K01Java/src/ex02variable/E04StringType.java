@@ -25,7 +25,7 @@ public class E04StringType {
 //		String stringNumer2 = (String)100; -> 에러 발생
 		
 		/*
-		문자열 + 정수 = 문자열
+		문자열 + 정수 = 문자열로 쭉 표현됨
 		즉 문자열에 정수가 연결된 형태로 출력된다.
 		 */
 		String strNumber = "100";
