@@ -11,7 +11,7 @@ public abstract class Qu_02_02 {
 		double avg = (kor + eng + math) / 3.0;
 		
 		System.out.printf("평균점수: %2.2f%n",avg);
-		System.out.printf("평균점수: %.0f",avg); // 정수형 재확인
+		System.out.printf("평균점수: %d",(int)avg); // 정수형 재확인
 	}
 
 }

@@ -16,6 +16,8 @@ public class Qu_04_04 {
 	public static void main(String[] args) {
 		
 		int num = 120;
+		
+		//2개의 조건을 동시에 만족해야 하므로 논리 And 연산자로 묶어준다.
 		if (num > 0 && num %2 ==0) {
 			System.out.println("양수이면서 짝수");
 		}

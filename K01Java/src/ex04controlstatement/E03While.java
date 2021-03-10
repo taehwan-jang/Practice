@@ -48,6 +48,49 @@ public class E03While {
 		}
 		System.out.println("\n==========================\n");
 		
+		/*
+		시나리오] 1부터 100까지의 정수중 3의 배수이거나 4의 배수인
+		수의 합을 구하는 프로그램을 while문을 이용해서 작성하시오.
+		 */
+		
+		int j = 1;
+		int total = 0;
+		while(j <= 100) {
+			
+			if(j % 3 == 0 || j % 4 == 0) {
+				total += j;
+				j++;
+			}
+			else 
+				j++;
+		}
+		System.out.println("1~100사이 3 또는 4의 배수의 합: "+total);
+		
+		/*
+        시나리오] 아래와 같은 모양을 출력하는 while문을 작성하시오
+            출력결과
+            1 0 0 0
+            0 1 0 0
+            0 0 1 0
+            0 0 0 1
+		 */
+		
+		int m = 1;
+		while(m <=4 ) {//행으로 4번 반복
+			int n = 1;
+			while(n <= 4) {//열을 4번 반복
+				
+				if(m == n) 
+					System.out.print("1 ");
+				else 
+					System.out.print("0 ");
+			n++;
+			}
+		System.out.println();//한 행을 출력한 후 줄바꿈 처리
+		m++;
+			
+		}
+		
 	}
 
 }

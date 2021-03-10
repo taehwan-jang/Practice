@@ -13,9 +13,13 @@ public class Qu_04_02 {
 
 		System.out.print("문자 하나를 입력하세요.: ");
 		int asciiCode = System.in.read();
+		/*
+		삼항연산자의 형식
+			변수 = (조건) ? "참일때" : "거짓일때";
+		 */
 		
-		String asciicode = (asciiCode >= 48 && asciiCode <= 57) ? "숫자입니다." : "문자입니다.";
-		System.out.println(asciicode);
+		String asciiStr = (asciiCode >= '0' && asciiCode <= '9') ? "숫자입니다." : "문자입니다.";
+		System.out.println(asciiStr);
 	}
 
 }

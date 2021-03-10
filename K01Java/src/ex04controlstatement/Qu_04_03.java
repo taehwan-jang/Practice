@@ -10,26 +10,36 @@ import java.util.Scanner;
     ....
     60점미만 F학점을 출력하는 프로그램을 작성하시오.
 단 switch문을 사용해야 합니다.(Scanner클래스를 사용하세요)
+
+	99 / 10 = 9 .. 90 / 10 = 9
+	89 / 10 = 8 ...80 / 10 = 8
+	.
+	.
+	69 / 10 = 6 ...60 / 10 = 6
  */
 public class Qu_04_03 {
 
 	public static void main(String[] args) throws IOException{
 
+		int kNum, eNum, mNum;
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("국어 : ");
-		int kNum = scanner.nextInt();
+		kNum = scanner.nextInt();
 		System.out.print("영어 : ");
-		int eNum = scanner.nextInt();
+		eNum = scanner.nextInt();
 		System.out.print("수학 : ");
-		int mNum = scanner.nextInt();
+		mNum = scanner.nextInt();
 		
-		double avg = (kNum + eNum + mNum) / 3;
+		double avg = (kNum + eNum + mNum) / 3.0;
+		/*
+		int result = (int)(avg / 10); ->사실 순서의 문제임 ㅋ
+		 */
 		System.out.printf("평균점수 : %.2f%n",  avg);
 		
-		int iavg = (int)avg;
+		int result = (int)avg;
 		
-		switch(iavg/10) { //만약에 91, 81, 71, 61 기준이라 한다면 iavg-1 하면 해결;
-		case 9:
+		switch(result/10) { //만약에 91, 81, 71, 61 기준이라 한다면 result - 1 하면 해결;
+		case 10:case 9: // case 10을 안넣으면 만점인데 F학점 받는다 
 			System.out.println("A학점");
 			break;
 		case 8:
