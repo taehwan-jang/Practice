@@ -11,14 +11,14 @@ public class E05MethodType04_2 {
 		int exitC;
 		
 		do {
-			System.out.print("입력 할 횟수: ");
-			int numCnt = scanner.nextInt();
-			int maxValue = returnMaxNumber(numCnt);
-			System.out.println("최대값 1 :" + maxValue);
+			System.out.print("입력 할 횟수 : ");
+			int hmt = scanner.nextInt();
+			int maxValue = returnMaxNumber(hmt);
 			
+			System.out.println("최대값 :" + maxValue);
 			System.out.print("계속 하려면 x 아님 암거나 :");
-			exitC = System.in.read();
 			
+			exitC = System.in.read();
 		}while(!(exitC == 'x' || exitC == 'X'));
 	}
 	//최대값을 구하여 반환하는 메소드
@@ -33,7 +33,7 @@ public class E05MethodType04_2 {
 			System.out.print("정수를 입력하세요 : ");
 			int inputNum = scanner.nextInt();
 			
-			if(i == 10) {
+			if(i == 1) {
 				//입력받은 숫자중 첫번째 값을 기준값으로 한다.
 				maxVal = inputNum;
 			}

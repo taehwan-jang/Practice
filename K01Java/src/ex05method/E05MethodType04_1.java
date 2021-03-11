@@ -20,7 +20,7 @@ public class E05MethodType04_1 {
 		int sumOfAge = getTotalAge(personCnt);
 		
 		System.out.println("입력받은 나이의 합은? : "+sumOfAge);
-		int ageAvg = sumOfAge / 3; 
+		int ageAvg = sumOfAge / personCnt; 
 		System.out.print("평균나이? : "+ageAvg);
 		
 	}
