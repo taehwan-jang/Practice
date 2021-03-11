@@ -6,7 +6,7 @@ import java.util.Scanner;
 메소드의 규칙
 -Java에서 main 메소드는 무조건 public static void로
 	선언하기로 약속되어 있다.
--static으로 선언된 메서도는 static으로 선언된 메소드만
+-static으로 선언된 메소드는 static으로 선언된 메소드만
 	호출할 수 있디.
 -메소드로 호출 후 반환값은 항상 호출한 위치로 반횐된다. 이때
 	메소드는 메모리에서 소멸된다.

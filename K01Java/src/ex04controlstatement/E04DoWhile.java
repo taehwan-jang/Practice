@@ -53,6 +53,17 @@ public class E04DoWhile {
 		단, 사용자가 X,x(대소문자 구분없음)를 입력하면 프로그램이
 		종료되어야 하며 do~while문으로 구현해야 한다.
 		 */
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Scanner scanner = new Scanner(System.in);
 		int kor, eng, math, avg;
 		int exitCode;
