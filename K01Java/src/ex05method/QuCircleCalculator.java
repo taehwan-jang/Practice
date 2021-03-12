@@ -17,26 +17,29 @@ public class QuCircleCalculator {
 
 		Scanner scanner = new Scanner(System.in);
 		System.out.print("반지름을 입력 :");
-		int rad = scanner.nextInt();
+		double rad = scanner.nextDouble();
 		
-		circleArea(rad);
-		circleRound(rad);
+		double area = circleArea(rad);
+		double round = circleRound(rad);
 		
+		System.out.printf("원의 넓이(%.2f) : %.2f\n", rad , area);
+		System.out.printf("원의 둘레(%.2f) : %.2f ", rad , round);
 	}
 	
-	static void circleArea(int r) {
+	static double circleArea(double r) {
 		
 		final double PI = 3.14;
-		double result = PI * r * r;
-		System.out.printf("원의 넓이(%d) : %.2f\n", r , result);
+		double resultArea = PI * r * r;
 		
+		return resultArea;	
 	}
-	static void circleRound(int r) {
+	
+	static double circleRound(double r) {
 		
 		final double PI = 3.14;
-		double result = PI * 2 * r ;
-		System.out.printf("원의 둘레(%d) : %.2f", r , result);
+		double resultRound = PI * 2 * r ;
 		
+		return resultRound;
 	}
 
 }

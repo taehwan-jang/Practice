@@ -12,31 +12,33 @@ import java.util.Scanner;
  */
 public class QuTemperature {
 
-	static void celTofah(int celsius) {
-		
-		double fah = 1.8 * celsius + 32 ;
-		System.out.println("화씨 온도 :" + fah + "F");
+	static double celTofah(double cel) {
+		double result = 1.8 * cel + 32 ; 
+		return result;
 	}
-	static void fahTocel(int fahrenheit) {
-		
-		double cel = (fahrenheit - 32) / 1.8 ;
-		System.out.println("섭씨 온도 :" + cel + "˚");
-
+	static double fahTocel(double fah) {
+		return (fah - 32) / 1.8 ;
 	}
 	public static void main(String[] args) {
 
+		/*
+		전달하는 파라미터가 정수이고, 매개변수가 실수일 경우
+		전달될때 자동형변환이 된다
+		 */
 		Scanner scanner = new Scanner(System.in); 
 		System.out.print("섭씨->화씨 1 입력, 화씨->섭씨 2 입력 :");
 		int tem = scanner.nextInt();
 		if(tem == 1) {
 			System.out.print("온도 입력(섭씨) :");
-			int cel = scanner.nextInt();
-			celTofah(cel);
+			double cel = scanner.nextInt();
+			double changeFah = celTofah(cel);
+			System.out.println("화씨 온도 :" + changeFah + "F");
 		}
 		else {
 			System.out.print("온도 입력(화씨) :");
-			int fah = scanner.nextInt();
+			double fah = scanner.nextInt();
 			fahTocel(fah);
+			System.out.println("섭씨 온도 :" + fahTocel(fah) + "˚");
 		}
 		
 	}

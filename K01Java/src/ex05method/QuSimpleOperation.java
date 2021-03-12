@@ -16,8 +16,8 @@ public class QuSimpleOperation {
 		System.out.printf("%2d - %2d = %d\n",a,b,(a - b));
 		System.out.printf("%2d * %2d = %d\n",a,b,(a * b));
 		System.out.printf("%2d / %2d = %d(몫)\n",a,b,(a / b));
-		System.out.printf("%2d / %2d = %d(나머지)\n",a,b,(a % b));
-	}
+		System.out.printf("%2d %% %2d = %d(나머지)\n",a,b,(a % b));
+	}//			   printf문에서 %를 출력하려면 %% 두개 붙여야함(이스케이프 시퀀스 사용)
 	
 	public static void main(String[] args) {
 
