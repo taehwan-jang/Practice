@@ -16,7 +16,7 @@ public class E05MethodType04_2 {
 			int maxValue = returnMaxNumber(hmt);
 			
 			System.out.println("최대값 :" + maxValue);
-			System.out.print("계속 하려면 x 아님 암거나 :");
+			System.out.print("그만하려면 x 아님 암거나 :");
 			
 			exitC = System.in.read();
 		}while(!(exitC == 'x' || exitC == 'X'));
