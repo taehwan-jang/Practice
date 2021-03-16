@@ -8,12 +8,13 @@ public class E01StringBasic {
 		기본자료형의 경우 비교연산자(==)를 통해 값에 대한 비교를 한다.
 		 */
 		int num1=10, num2=20;
-		String numResult = (num1==num2)? "데이터같다":"데이터다르다";
+		String numResult = (num1==num2)? 
+				"데이터같다":"데이터다르다";
 		System.out.println("비교결과:"+ numResult);
 		
 		/*
 		String클래스의 객체생성방법 1
-			: new를 이요한다. new를 사용하면 동일한 문자열이라도
+			: new를 이용한다. new를 사용하면 동일한 문자열이라도
 			항상 Heap영역에 새로운 메모리를 생성하게 된다.
 		 */
 		String str1 = new String("Hello JAVA");

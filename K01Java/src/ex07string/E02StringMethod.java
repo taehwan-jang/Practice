@@ -94,7 +94,7 @@ public class E02StringMethod {
 		7] endsWith()
 			: 문자열이 특정 문자열로 끝나면 true, 아니면 false를
 			반환한다.
-		8] startWith()
+		8] startsWith()
 			: 특정 문자열로 시작하면 true를 반환한다.
 		 */
 		
@@ -180,8 +180,9 @@ public class E02StringMethod {
 			System.out.printf("phoneArr[%d]=%s\n",
 					i,phoneArr[i]);
 		}
-//		for(String e : phoneArr);
+//		for(String e : phoneArr) {
 //			System.out.println(e);
+//		}
 		/*
 		14] substring()
 			: 시작인덱스와 끝인덱스 사이의 문자열을 잘라서 반환해준다.
