@@ -57,7 +57,7 @@ class Account {
 	
 }
 
-public class E03AccountMain {
+public class E04AccountMain {
 
 	public static void main(String[] args) {
 

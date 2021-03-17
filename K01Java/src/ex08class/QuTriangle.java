@@ -35,7 +35,7 @@ class Triangle {
 	}
 	
 	public double getArea() {
-		return area = base*height/2.0;
+		return area = base*height*0.5;
 	}
 	
 	

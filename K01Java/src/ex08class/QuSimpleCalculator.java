@@ -36,24 +36,20 @@ class CalculatorEx {
 	}
 	
 	public double add(double a, double b) {
-		double result1=0;
 		addCnt+=1;
-		return result1 = a+b;
+		return a+b;
 	}
 	public double min(double a, double b) {
-		double result2=0;
 		minCnt+=1;
-		return result2 = a-b;
+		return a-b;
 	}
 	public double mul(double a, double b) {
-		double result3=0;
 		mulCnt+=1;
-		return result3 = a*b;
+		return a*b;
 	}
 	public double div(double a, double b) {
-		double result5=0;
 		divCnt+=1;
-		return result5 = a/b;
+		return a/b;
 	}
 	public void showOpCount() {
 		System.out.println("덧셈횟수 : "+ addCnt);

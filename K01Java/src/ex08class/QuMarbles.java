@@ -25,6 +25,11 @@ class ChildProperty {
 	}
 	public void obtainBead(ChildProperty n,int a) {
 		this.marble += a; 
+		/*
+		호출의 주체가 되는 어린이 객체는 게임에 승리하였으므로
+		구슬을 증가해야 하고 매개변수로 전달되는 어린이 객체는
+		패배하였으므로 구술을 차감해야 한다.
+		 */
 		n.marble -= a;
 	}
 }
