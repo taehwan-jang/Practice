@@ -77,7 +77,7 @@ public class E01StaticModifier {
 			바로 접근이 가능하다.
 		 */
 		MyStatic.staticVar = 200;
-		System.out.println("MyStatic.staticVar= "+
+		System.out.println("myStatic.staticVar= "+
 				myStatic.staticVar);
 	
 		/*
