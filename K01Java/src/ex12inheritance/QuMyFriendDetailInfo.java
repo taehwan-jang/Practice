@@ -11,7 +11,7 @@ class MyFriendInfo
 	this.age = age;
 }
 
-  	public void ShowMyFriendInfo() {
+  	public void showMyFriendInfo() {
   		System.out.println("이름: "+ name);
   		System.out.println("나이: "+ age);
   }
@@ -28,8 +28,8 @@ class MyFriendDetailInfo extends MyFriendInfo {
 		this.phone = phone;
 	}
 
-	public void ShowMyFriendDetailInfo() {
-		ShowMyFriendInfo();
+	public void showMyFriendDetailInfo() {
+		super.showMyFriendInfo();
 		System.out.println("주소: "+ addr);
 		System.out.println("전화: "+ phone);
   }
@@ -39,7 +39,7 @@ class QuMyFriendDetailInfo {
  		
  		MyFriendDetailInfo friendInfo = new 
 			MyFriendDetailInfo("장태환", 30, "부천", "010-1234-5678");
- 		friendInfo.ShowMyFriendDetailInfo();
+ 		friendInfo.showMyFriendDetailInfo();
  		
       //이름, 나이, 주소, 전화번호를 인자로 객체를 생성…
       //정보Print

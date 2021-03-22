@@ -5,14 +5,14 @@ class Burger {
 	private int price;
 	String patty;
 	String source;
-	String vegi;
+	String vege;
 	
-	public Burger(String burgerName, int price, String patty, String source, String vegi) {
+	public Burger(String burgerName, int price, String patty, String source, String vege) {
 		this.burgerName = burgerName;
 		this.price = price;
 		this.patty = patty;
 		this.source = source;
-		this.vegi = vegi;
+		this.vege = vege;
 	}
 	    public int getPrice() {
     	return price;
@@ -20,7 +20,7 @@ class Burger {
         public void showMenu() {
     	System.out.println(burgerName);
     	System.out.println("가격: "+price);
-    	System.out.printf("식재료: %s,%s,%s\n",patty,source,vegi);
+    	System.out.printf("식재료: %s,%s,%s\n",patty,source,vege);
     }
 
 }
@@ -52,7 +52,8 @@ class SetPrice extends HamburgerPrice {
 	}
 	@Override
 	public int totalPrice() {
-		return (burger.getPrice()+COKE+POTATO)-500;
+//		return (burger.getPrice()+COKE+POTATO)-500;
+		return super.totalPrice()-500;
 	}
 	@Override
 	public void showPrice() {
