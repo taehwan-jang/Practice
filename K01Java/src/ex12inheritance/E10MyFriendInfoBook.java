@@ -3,8 +3,8 @@ package ex12inheritance;
 import java.util.Scanner;
 
 /*
-친구를 표현한 최상위 클래스로 해등 프로그램에서는
-Friend 클래스로 캑체생성은 하지 않는다.
+친구를 표현한 최상위 클래스로 해딩 프로그램에서는
+Friend 클래스로 객체생성은 하지 않는다.
 상속의 목적으로만 정의된 클래스이다.
  */
 class Friend {
@@ -236,9 +236,9 @@ class FriendInfoHandler {
 				myFriends[i].showAllData();
 				System.out.println("요청하신 정보입니다.");
 			}
-			else {
-				System.out.println("요청하신 정보가 없습니다.");
-			}
+//			else {잘못된 문장임 for문이 돌때마다 찾기전까지 출력됨 병신아
+//				System.out.println("요청하신 정보가 없습니다.");
+//			}
 		}
 	}
 	//주소록 항목 삭제
