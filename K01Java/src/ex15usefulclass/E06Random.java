@@ -12,7 +12,7 @@ public class E06Random {
 		이를 가르켜 가짜난수(psuedo-radnom number)
 		 */
 		System.out.println("##난수생성1 : seed로 32를 사용");
-		Random random1 = new Random(30);
+		Random random1 = new Random(32);
 		for(int i=0 ; i<10 ; i++) {
 			/*
 			nextInt()의 인자갑 100이 전달되면 0~99사이의

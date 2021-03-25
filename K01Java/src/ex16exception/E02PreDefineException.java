@@ -63,7 +63,7 @@ public class E02PreDefineException {
 		catch(NumberFormatException e) {
 			System.out.println("나이는 숫자로만 입력해야 합니다.");
 			System.out.println("예외메세지: "+ e.getMessage());
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 		/*
 		숫자를 입력해야 하는데, 문자열을 잘못 입력하는 경우 발생되는 예외
@@ -100,9 +100,60 @@ public class E02PreDefineException {
 			System.out.println("toDay 참조변수는 null입니다.");
 			System.out.println("예외메세지: "+e.getMessage());
 		}
+		
+		/*
+		ArithMetticException : 수학적 계산이 불가능한 경우 발생되는 예외
+		 */
+		System.out.println("==ArithMetticException==");
+		int result = 10;
+		try {
+			result = result / 0;//0으로는 숫자를 나눌수 없다. 무한대가 됨
+			System.out.println("결과는:"+ result);
+		}
+		catch(ArithmeticException e) {
+			System.out.println("0으로 나눌 수 없습니다.");
+			System.out.println("예외메세지:"+e.getMessage());
+		}
+		/*
+		ClassCastException : 형변환이 불가능한 경우 발생되는 예외
+		 */
+		System.out.println("==ClassCastException==");
+		Object obj = new Object();
+		try {//순수한 Object객체이므로 다른 형으로 형변환 할 수 없다.
+			String strObject = (String)obj;
+		}
+		catch(ClassCastException e) {
+			System.out.println("형변환 할 수 없습니다.");
+			System.out.println(e);
+			System.out.println(e.getMessage());
+			e.printStackTrace();//개발시 가장 많이 사용함
+		}
+		System.out.println("==ClassCastException발생후==");
 		System.out.println("끝~~~~~~~~~~~~~~~");
 		
+		String str = "형변환ㅇㅋ?";
+		boolean castFlag = myClassCasting(str);
+		if(castFlag==true) {
+			System.out.println("ㅇㅋ");
+		} 
+		else {
+			System.out.println("ㄴㄴ");
+		}
+		
 
+	}//EndofMain
+	/*
+	String객체가 인자로 전달되면서 매개변수를 통해 Object로 
+	upcasting되기 때문에 여기서 상속관계가 확인되어 매개변수 o는
+	String으로 형변환이 가능해진다.
+	 */
+	public static boolean myClassCasting(Object o) {
+		if(o instanceof String) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-
+	
 }
