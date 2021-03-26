@@ -98,6 +98,16 @@ public class QuRockPaperScissors {
 				}
 			}
 			catch (InputMismatchException e) {
+				/*
+				정수를 입력받으라고 만들어놓은애..
+				ex) 1 + enter ->정상
+					ㅁ + enter -> 무한루프 발생
+					ㅁ을 보자마자 에러 빵 날리고 버퍼에 enter가 
+					남아있기때문에 int inputN = scan.nextInt();
+					를 계속 스킵해 그래서 enter를 제거시켜야해
+					nextInt() 혹은 nextLine()을 입력하면
+					입력됐던게 인식이 되어서 할당됨 
+				 */
 				System.out.println("숫자를 입력");
 				scan.nextLine();
 			}
