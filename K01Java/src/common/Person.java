@@ -36,10 +36,10 @@ public class Person {
 	 */
 	@Override
 	public int hashCode() {
-		System.out.println("hashCode= "+name.hashCode());
-		return (name.hashCode()+age); //이름과 나이 둘 다 비교
+//		System.out.println("hashCode= "+name.hashCode());
+//		return (name.hashCode()+age); //이름과 나이 둘 다 비교
 //		return age;//나이만 비교
-//		return name.hashCode();//이름만 비교
+		return name.hashCode();//이름만 비교
 	}
 	/*
 	오버라이딩 한 두개의 메소드는 항상 동일한 멤버변수간의
@@ -49,11 +49,11 @@ public class Person {
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		System.out.println("equals메소드 호출됨");
 		Person person = (Person)obj;//name은 private인데 전달받은거에서 가능? 객체를 생성해서 괜찮?
-		if(person.age==this.age && (person.name).equals(this.name)) {//이름&나이 비교
+		System.out.println("오버라이딩 한 equals() 호출됨: "+person.name);
+//		if(person.age==this.age && (person.name).equals(this.name)) {//이름&나이 비교
 //		if(person.age==this.age) {//나이만 비교
-//		if((person.name).equals(this.name)) {//이름만 비교
+		if((person.name).equals(this.name)) {//이름만 비교
 			return true;
 		}
 		else {
