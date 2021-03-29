@@ -1,5 +1,6 @@
 package quiz;
 
+import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -47,6 +48,30 @@ public class QuBaseballGame {
 			}
 		}
 		return com;
+//		HashSet<Integer> ran = new HashSet<Integer>();
+//		Random random = new Random();
+//		while(true) {
+//			Integer comNumber = random.nextInt(9)+1;
+//			ran.add(comNumber);
+//			if(ran.size()==3) {
+//				break;
+//			}
+//		}
+//		int[] comArr = new int[3];
+//		int b = 0;
+//		for(Integer q : ran) {
+//			comArr[b++] = q;
+//		}
+//		
+//		Iterator<Integer> itr = ran.iterator();
+//		int b = 0;
+//		while(itr.hasNext()) {
+//			comArr[b++]=itr.next();
+//		}
+//		for(int i=0 ; i<comArr.length ; i++) {
+//			System.out.print("com["+i+"]="+comArr[i]);
+//			System.out.println();
+//		}
 		
 	}
 	public static void gamePlay() {

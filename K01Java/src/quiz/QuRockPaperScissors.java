@@ -86,14 +86,19 @@ public class QuRockPaperScissors {
 					gamecount++;
 				}
 				if(gamecount==5) {
-					System.out.println("5번 게임 끝, 계속?(1)그만(0)?: ");
-					int reOrStop = scan.nextInt();
-					if(reOrStop==1) {
-						gamecount=0;
-						continue;
-					}
-					else if(reOrStop==0){
-						return;
+					while(true) {
+						System.out.println("5번 게임 끝, 계속?(1)그만(0)?: ");
+						int reOrStop = scan.nextInt();
+						if(reOrStop==1) {
+							gamecount=0;
+							break;
+						}
+						else if(reOrStop==0){
+							return;
+						}
+						else {
+							continue;
+						}
 					}
 				}
 			}

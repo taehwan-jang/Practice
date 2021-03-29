@@ -45,17 +45,21 @@ public class QuArrayList {
 	    	if(st.getName().equals(inputName)){
 	    		index=list.indexOf(st);
 	    		System.out.println("[검색되었습니다]");
-	    		list.remove(index);
 	    	}
 	    }
 	    if(index==-1) {
 	    	System.out.println("[검색결과가 없습니다]");
 	    }
 	    else {
+	    	list.remove(index).showInfo();/*
+	    	 		컬렉션에 저장된 객체를 인덱스를 통해 삭제하면
+	    	 		삭제된 객체 자체를 반환하므로 멤버메소드를
+	    	 		바로 호출할 수 있다.
+	    	 		*/
 	    }
 	    System.out.println("[삭제후 정보출력]");
 	    for(Student st : list) {
-	    	System.out.println(st.getInfo());
+	    	System.out.println(st.toString());
 	    }
 	}
 }

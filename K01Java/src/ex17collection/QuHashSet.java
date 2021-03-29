@@ -59,7 +59,6 @@ class Avengers {
 		return false;
 	}
     
-    
 }
 
 public class QuHashSet {

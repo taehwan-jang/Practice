@@ -18,5 +18,9 @@ public class Student extends Person {
 		System.out.println("학생의 정보"); 
 		System.out.println(getInfo()); 
 	}
+	@Override
+	public String toString() {
+		return super.getInfo()+String.format(",학번:%s", stNumber);
+	}
 	
 }
