@@ -10,12 +10,12 @@ public class E04Array {
 		시나리오] 정수 10개를 저장할 수 있는 배열을 생성한 후
 		반복문을 통해 1부터 순차적인 값을 입력하시오.
 		 */
-		int[] arr = new int[10];
-		
-		for(int i=1 ; i<arr.length ; i++) {
-			arr[i]+=i;
-			System.out.print(arr[i]+" ");
-		}
+//		int[] arr = new int[10];
+//		
+//		for(int i=1 ; i<arr.length ; i++) {
+//			arr[i]+=i;
+//			System.out.print(arr[i]+" ");
+//		}
 		/*
 		시나리오] 정수 5개를 저장할 수 있는 배열을 생성한 후
 		숫자를 입력받아 저장한다. 단 숫자가 짝수일때만 저장할 수 
@@ -27,24 +27,40 @@ public class E04Array {
 		int[] arr2 = new int[5];
 		int index=0;
 		//배열의 크기만큼 반복할때는 항상 length를 사용한다.
-		for(int i=0 ; i<arr2.length ; i++) {
-			System.out.print("숫자를 입력하세요: ");
-			int inputNum = scan.nextInt();
-			if(inputNum%2==0) {
-				arr2[index++] = inputNum;
+//		for(int i=0 ; i<arr2.length ; i++) {
+//			System.out.print("숫자를 입력하세요: ");
+//			int inputNum = scan.nextInt();
+//			if(inputNum%2==0) {
+//				arr2[index++] = inputNum;
+//			}
+//		}
+//		for(int i=0 ; i<arr2.length ; i++) {
+//			if(arr2[i]==0) {
+//			}
+//			else{
+//				System.out.print(arr2[i]+" ");
+//			}
+//		}
+		/*
+		시나리오] 정수 5개를 저장할 수 있는 배열을 생성한 후 숫자를 입력받아
+		저장한다. 단 숫자가 짝수일때만 순서대로 저장해야 하고, 5개 모두 입력되면
+		프로그램을 종료한다.
+		 */
+		
+		int[] arr3 = new int[5];
+		int a = 0;
+		while(true) {
+			System.out.print("배열에 숫자를 입력: ");
+			int inputN = scan.nextInt();
+			if(inputN%2==0) {
+				arr3[a++] = inputN;
+			}
+			if(a==5) {
+				break;
 			}
 		}
-		for(int i=0 ; i<arr2.length ; i++) {
-			if(arr2[i]==0) {
-			}
-			else{
-				System.out.print(arr2[i]+" ");
-			}
+		for(int i=0 ; i<arr3.length ; i++ ) {
+			System.out.print(arr3[i]+" ");
 		}
-		
-		
-		
-		
 	}
-
 }

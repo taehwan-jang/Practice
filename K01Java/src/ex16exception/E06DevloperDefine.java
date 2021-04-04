@@ -7,8 +7,8 @@ import java.util.Scanner;
 사용자정의 예외클래스
 1.Exception클래스를 상속받는다.
 2. 생성자에서 예외발생시 출력할 메시지를 super()를 통해 입력한다.
-3. 예외 발생지점에서 if문으로 감지한 후 예외객체를 생성 및 thorw한다.
-4. catch문에서 예외겍채를 받아 처리한다.
+3. 예외 발생지점에서 if문으로 감지한 후 예외객체를 생성 및 throw한다.
+4. catch문에서 예외객채를 받아 처리한다.
  */
 class AgeErrorException extends Exception {
 	public AgeErrorException() {

@@ -16,20 +16,20 @@ public class Qu_04_01 {
 
 	public static void main(String[] args) throws IOException{
 
-//		System.out.print("문자를 입력하세요: ");
-//		int asciiCode = System.in.read();
-//		
-//		if(asciiCode>=48 && asciiCode<=57) {
-//			if(asciiCode%2==0) { // 좀 더 간단한 방법 찾아볼것
-//				System.out.println("2의 배수입니다.");
-//			}
-//			else {
-//				System.out.println("2의 배수가 아닙니다.");
-//			}
-//		}
-//		else {
-//			System.out.println("숫자가 아닙니다.");
-//		}
+		System.out.print("문자를 입력하세요: ");
+		int asciiCode = System.in.read();
+		
+		if(asciiCode>=48 && asciiCode<=57) {
+			if(asciiCode%2==0) { // 좀 더 간단한 방법 찾아볼것
+				System.out.println("2의 배수입니다.");
+			}
+			else {
+				System.out.println("2의 배수가 아닙니다.");
+			}
+		}
+		else {
+			System.out.println("숫자가 아닙니다.");
+		}
 		System.out.print("문자 하나를 입력하세요 : ");
 		int ascii = System.in.read();
 		

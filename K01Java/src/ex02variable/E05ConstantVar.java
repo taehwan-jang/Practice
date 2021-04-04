@@ -50,6 +50,9 @@ public class E05ConstantVar {
 		user = PAPER;
 		System.out.println("cpmputer win");
 		
+		final String a = "안되나";
+		System.out.println(a);
+		
 	
 	}
 

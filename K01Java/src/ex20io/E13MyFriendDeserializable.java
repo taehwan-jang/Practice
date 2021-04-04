@@ -23,6 +23,7 @@ public class E13MyFriendDeserializable {
 //			FriendInfoHandler fn3 = (FriendInfoHandler)in.readObject();
 				
 			fn1.showAllData();
+			fn1.searchInfo();
 			
 		}
 		catch (ClassNotFoundException e) {

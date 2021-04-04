@@ -27,7 +27,7 @@ public class E02ByteBufferFileCopy {
 			/*
 			1kb씩 읽어서 저장하기 위한 버퍼 생성
 			 */
-			byte buffer[] = new byte[1024];
+			byte buffer[] = new byte[1024];//버퍼를 2차원배열로 한다면?
 			
 			while(true) {
 				//1kb씩 파일을 읽어서 저장함.
@@ -38,6 +38,7 @@ public class E02ByteBufferFileCopy {
 				/*
 				읽어온 내용을 파일에 입력함. 버퍼에 저장된 데이터를
 				인덱스 0의 위치에서 readLen의 크기만큼 전송한다.
+				이 경우는 out이 계속해서 반복되겠지?
 				 */
 				out.write(buffer,0,readLen);
 				copyByte += readLen;

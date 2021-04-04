@@ -48,11 +48,5 @@ public class E06BreakContinue {
 			}
 			System.out.println("\n break 때문에 y가 3까지만 출력");
 		}
-		
-		
-		
-		
-		
 	}
-
 }
