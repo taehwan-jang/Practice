@@ -156,7 +156,7 @@ public class E13MyFriendserializable2 {
 				break;
 //			프로그램 종료
 			case 7:
-				handler.saveFriendInfo();
+//				handler.saveFriendInfo();
 				System.out.println("[친구정보 갱신완료]");
 				System.out.println("프로그램을 종료합니다.");
 				//main메소드의 종료는 프로그램의 종료로 이어진다.

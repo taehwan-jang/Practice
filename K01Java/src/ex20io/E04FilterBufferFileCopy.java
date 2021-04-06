@@ -34,7 +34,7 @@ public class E04FilterBufferFileCopy {
 			읽기/쓰기 속도가 매우 빠르다
 			 */
 			while(true) {
-				//버퍼의 크기많큼 읽고
+				//버퍼의 크기만큼 읽고
 				bData = bufIn.read();
 				
 				if(bData==-1) {

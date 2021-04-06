@@ -24,7 +24,7 @@ public class DBConnect {
 			※서버환경에 따라 ip주소, 포트번호, sid는 변경될 수 있다.
 			 */
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String id = "kosmo";
+			String id = "hr";
 			String pass = "1234";
 			/*
 			3.DriverManager 클래스의 메소드를 통해 오라클에 연결을
