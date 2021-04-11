@@ -104,6 +104,104 @@ desc tb_member_empty;
 select * from tb_member_empty;
 
 
+/*********************************************************************************************/
+/******************************SCOTT계정으로 연습문제 진행*************************************/
+/*********************************************************************************************/
+
+/***********
+1. 다음 조건에 맞는 “pr_dept” 테이블을 생성하시오.
+***********/
+create table pr_dept (
+    dno number(2),
+    dname varchar2(20),
+    loc varchar2(35)
+);
+desc pr_dept;
+
+/***********
+2. 다음 조건에 맞는 “pr_emp” 테이블을 생성하시오.
+***********/
+create table pr_emp (
+    eno number(4),
+    ename varchar2(10),
+    job varchar2(30),
+    regist_date date
+);
+desc pr_emp;
+
+/***********
+3. pr_emp 테이블의 ename 컬럼을 varchar2(50) 로 수정하시오.
+***********/
+alter table pr_emp modify ename varchar(50);
+desc pr_emp;
+
+/*********************
+4. pr_emp 테이블을 복사해서 pr_emp_clone 테이블을 생성하되 
+eno, ename, job만 복사하고 새로 생성된 칼럼명은 
+e_no, e_name, job_id 로 지정하시오.
+**********************/
+create table pr_emp_clone 
+as
+select eno 'e_no', ename 'e_name', job 'job_id' 
+from pr_emp where 1=0;
+
+create table pr_emp_clone (
+    e_no, e_name, job_id
+)
+as
+select  eno, ename, job from pr_emp where 1=1;
+--추가] 기존의 테이블을 그대로 복사하는 방법
+create table pr_emp_clone2
+as
+select * from pr_emp;
+desc pr_emp_clone2;
+desc pr_emp_clone;
+
+/**********************
+5. 위에서 복사한 pr_emp_clone 테이블의 이름을 
+pr_emp_clone_rename 으로 변경하시오.
+**********************/
+alter table pr_emp_clone rename to pr_emp_clone_rename; 
+desc pr_emp_clone -- 기존 테이블 없어짐
+
+rename pr_emp_clone to pr_emp_clone_rename;
+desc pr_emp_clone_rename;
+/*********************
+6. 1번에서 생성한 pr_dept 테이블에서 dname 칼럼을 삭제하시오.
+*********************/
+alter table pr_dept drop column dname;
+desc pr_dept;
+
+/*********************
+7. “pr_emp” 테이블의 job 컬럼을 varchar2(50) 으로 수정하시오.
+*********************/
+desc pr_emp;
+alter table pr_emp modify job varchar2(50);
+
+/**********************
+8. 5번의 pr_emp_clone_rename 테이블을 삭제하시오
+***********************/
+drop table pr_emp_clone_rename;
+drop table pr_emp_clone2;
+
+/*
+▣ 테이블에 컬럼 추가하기
+    형식
+        alter table 테이블명 
+            add 추가할컬럼 자료형(크기) 제약조건;
+
+▣ 테이블의 컬럼 수정하기
+    형식
+        alter table 테이블명 modify 수정할컬럼명 자료형(크기);
+
+▣ 테이블의 컬럼 삭제하기
+    형식
+        alter table 테이블명 drop column 컬럼명;
+*/
+
+
+
+
 
 
                                 

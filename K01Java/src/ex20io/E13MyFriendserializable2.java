@@ -13,13 +13,13 @@ import java.util.Scanner;
 저장할 수 있도록 직렬화 하시오.
 -저장될파일명 : friend_info.obj
  */
-class Friend implements Serializable  {
+class Friend2 implements Serializable  {
 	//멤버변수
 	String name;//이름
 	String phone;//전화번호
 	String addr;//주소
 	//생성자메소드
-	public Friend(String name, String phone, String addr) {
+	public Friend2(String name, String phone, String addr) {
 		this.name = name;
 		this.phone = phone;
 		this.addr = addr;
@@ -43,7 +43,7 @@ class Friend implements Serializable  {
 /*
 고딩친구
  */
-class HighFriend extends Friend {
+class HighFriend extends Friend2 {
 	//확장한 멤버변수
 	String nickName;//별명
 	public HighFriend(String name, String phone, String addr, String nickName) {
@@ -73,7 +73,7 @@ class HighFriend extends Friend {
 	}
 }
 //대딩친구
-class UnivFriend extends Friend {
+class UnivFriend extends Friend2 {
 	//자식에서 확장한 멤버변수
 	String major;//전공
 	public UnivFriend(String name, String phone, String addr, String major) {
@@ -168,14 +168,14 @@ public class E13MyFriendserializable2 {
 }
 class FriendInfoHandler implements Serializable {
 	
-	Friend[] myFriends;
+	Friend2[] myFriends;
 	private int numOfFriends;
 	
 //	public Friend[] getMyFriends() {
 //		return myFriends;
 //	}
 	public FriendInfoHandler(int num) {
-		myFriends = new Friend[num];
+		myFriends = new Friend2[num];
 		numOfFriends = 0;
 	}
 	//새로운 친구 연락처 정보 추가

@@ -112,3 +112,130 @@ select * from tb_sample;
 update tb_sample set deptno=deptno+1;
 
 commit;
+
+/*********************************************************************************************/
+/******************************SCOTT계정으로 연습문제 진행*************************************/
+/*********************************************************************************************/
+
+/***********************
+1. DDL문 연습문제 2번에서 만든 “pr_emp” 테이블에 다음과 같이 레코드를 
+삽입하시오.단, 날짜는 sysdate를 이용해서 오늘 날짜를 입력하시오.
+***********************/
+select * from pr_emp;
+insert into pr_emp (eno,ename,job,regist_date) 
+values (1,'엄태웅','어른 승민',sysdate);
+insert into pr_emp (eno,ename,job,regist_date) 
+values (2,'이제훈','대학생 승민',sysdate);
+insert into pr_emp (eno,ename,job,regist_date) 
+values (3,'한가인','어른 서연',sysdate);
+insert into pr_emp (eno,ename,job,regist_date) 
+values (4,'수지','대학생 서연',sysdate);
+
+/**************************
+2. pr_emp 테이블에 다음 조건에 맞는 레코드를 삽입하시오.
+이름 : 조정석
+직책 : 납뜩이
+등록날짜 : to_date함수를 이용해서 7일전 날짜를 입력하시오.
+(현재날짜를 기준으로 7일전임)
+**************************/
+insert into pr_emp (eno,ename,job,regist_date) 
+values (5,'조정석','납뜩이',sysdate-7);
+
+insert into pr_emp 
+values (5,'조정석','납뜩이', to_date(sysdate-7,'yy/mm/dd');
+
+/****************************
+3. pr_emp 테이블의 eno가 짝수인 레코드를 찾아서 job 
+컬럼의 내용을 다음과 같이 변경하시오.
+“난짝수레코드” 과 같이 괄호의 문자열을 추가한다.
+*****************************/
+update pr_emp modifiy
+set job='난짝수레코드'
+where mod(eno,2)='0';
+
+update pr_emp
+    set job=job||'(난짝수레코드)'
+        where mod(eno,2=0; 
+    
+
+/****************************
+
+*****************************/
+create table pr_employees
+as 
+select * from emp where 1=1;
+--where절에 참의 조건을 주면 레코드까지 복사
+
+desc pr_employees;
+
+/*****************************
+4. pr_employees 테이블에서 
+사원번호 7900번과 동일한 메니져를 가진 사원의 
+부서번호를  이름이 FORD 인 사원의 부서번호로 업데이트 하시오.
+*****************************/
+select mgr from pr_employees where empno=7900;
+
+select deptno from pr_employees where upper(ename)='FORD';
+
+update pr_employees
+set deptno = (
+select deptno from pr_employees where upper(ename)='FORD')
+where mgr=(
+select mgr from pr_employees where empno=7900
+);
+
+--사원번호 7900번 확인
+select * from pr_employees where empno=7900;--mgr = 7698;
+--mgr 7698인 사원을 확인
+select * from pr_employees where mgr=7698;
+--FORD의 부서번호 확인
+select * from pr_employees where ename='FORD';
+
+update pr_employees set deptno=20 where mgr=7698;
+
+/******************************
+5.  pr_employees 테이블에서 입사일이 12월인 모든 직원을 삭제하시오.
+******************************/
+delete from pr_employees where substr(hiredate,4) like '12%';
+select hiredate from pr_employees;
+
+--1번방법 : 날짜포맷 사용
+delete from pr_employees where to_char(hiredate,'mm')=12;
+--2번방법 : 문자포맷 사용
+delete from pr_employees where substr(hiredate,4,2)=12;
+--3번방법 : like 사용
+delete from pr_employees where hiredate like '___12%';
+/*******************************
+6. pr_employees 테이블에서 입사일자가 가장 늦은 직원을 찾아서 
+ename 컬럼을 “기존의이름(신입사원)” 이 될수 있도록 업데이트 하시오. 
+예) KING(신입사원)
+********************************/
+select * from pr_employees order by hiredate desc;
+alter table pr_employees modify ename varchar2(100);
+desc pr_employees;
+
+select max(hiredate) from pr_employees;
+
+update pr_employees
+set ename = ename||'(신입사원)'
+/*set ename = concat(ename,'(신입사원)')*/
+where hiredate=(select max(hiredate) from pr_employees);
+
+/*
+레코드입력 : insert into 테이블명 (컬럼) values (값)
+레코드수정 : update 테이블명 set 컬럼=값 where 조건
+레코드삭제 : delete from 테이블명 where 조건
+레코드조회 : select 컬럼 from 테이블명 where 조건
+*/
+
+
+
+
+
+
+
+
+
+
+
+

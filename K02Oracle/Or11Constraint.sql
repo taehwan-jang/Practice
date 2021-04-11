@@ -394,8 +394,138 @@ insert into tb_check2 values ('5');
 insert into tb_check2 values ('6');--입력실패 check 제약조건 위배
 
 
+/*********************************************************************************************/
+/******************************SCOTT계정으로 연습문제 진행*************************************/
+/*********************************************************************************************/
+
+/************************************
+1. emp 테이블의 구조를 복사하여 pr_emp_const 테이블을 만드시오. 
+복사된 테이블의 사원번호 칼럼에 pr_emp_pk 라는 이름으로 
+primary key 제약조건을 지정하시오.
+************************************/
+create table pr_emp_const
+as
+select * from emp where 1=0;
+desc pr_emp_const;
+
+alter table pr_emp_const add
+    constraint pr_emp_pk
+        primary key (empno);
+        
+select * from user_constraints;
+
+/***********************************
+2. dept 테이블의 구조를 복사해서 pr_dept_const 테이블을 만드시오. 
+부서번호에 pr_dept_pk 라는 제약조건명으로 primary_key를 생성하시오.
+************************************/
+create table pr_dept_const
+as
+select * from dept where 1=0;
+
+desc pr_dept_const;
+
+alter table pr_dept_const add
+    constraint pr_dept_pk
+        primary key (deptno);
+        
+select * from user_constraints;
+
+/*************************************
+3. pr_dept_const 테이블에 존재하지 않는 부서의 사원이 
+배정되지 않도록 외래키 제약조건을 지정하되 제약조건 이름은 
+pr_emp_dept_fk 로 지정하시오.
+*************************************/
+alter table pr_dept_const add
+    constraint pr_emp_dept_fk 
+        foreign key (deptno)
+            references pr_emp_const (deptno);
+            -- 공부좀 제대로하자~~~~틀렷자나
+alter table pr_emp_const add--항상 1:N의 관계 생각해(1이 부모)
+    constraint pr_emp_dept_fk  --제약조건명 추가
+        foreign key (deptno) --자식테이블의 외래키(참조키)컬럼
+            references pr_dept_const (deptno);--부모테이블의 기본키(pk)컬럼
+            
+/*************************************
+4. pr_emp_const 테이블의 comm 칼럼에 0보다 큰 값만을 입력할수 
+있도록 제약조건을 지정하시오. 제약조건명은 지정하지 않아도 된다.
+*************************************/
+alter table pr_emp_const modify comm not null 
+check (comm >0);
+--                                       [constraint 제약조건명] 생략
+alter table pr_emp_const add check (comm>0);
+
+--제약조건 확인을 위한 레코드 삽입
+insert into pr_emp_const (empno,comm) values (100,0);
+
+--부모테이블에 레코드 입력
+insert into pr_dept_const values (10,'꿈의방','가산');
+insert into pr_dept_const values (20,'열정방','디지털');
+
+--앞에서 실패한 레코드 입력
+insert into pr_emp_const values 
+    (100,'아무개','열정',null,sysdate,1000,0.3,10);
+insert into pr_emp_const values 
+    (200,'아무개','열정',null,sysdate,800,0.45,20);
+select * from pr_emp_const;
 
 
+/************************************
+5. 위 3번에서는 두 테이블간에 외래키가 설정되어서 
+pr_dept_const 테이블에서 레코드를 삭제할 수 없었다. 
+이 경우 부모 레코드를 삭제할 경우 자식까지 같이 삭제될수 
+있도록 외래키를 지정하시오.
+************************************/
+--부모테이블
+select * from pr_dept_const;
+--자식테이블
+select * from pr_emp_const;
+--부모테이블에서 레코드 삭제하기
+delete from pr_dept_const where deptno=10;/*
+                    자식레코드가 있으므로 삭제불가함.
+                    외래키 제약조건 위배.
+            */
+            
+--외래키 재설정을 위해 기존의 외래키를 삭제한다.
+alter table pr_emp_const drop constraint pr_emp_dept_fk;
+
+--외래키 재설정
+alter table pr_emp_const add
+    constraint pr_emp_dept_fk 
+        foreign key (deptno)
+            references pr_dept_const (deptno)
+                on delete cascade;--부모 삭제시 자식도 같이 삭제되는 옵션
+--자식레코드가 있는 상테에서 부모레코드 삭제하기
+delete from pr_dept_const where deptno=10;
+select * from pr_dept_const;
+select * from pr_emp_const;
+
+commit;
+/*
+▣ 레코드 입력하기
+    형식1
+        INSERT INTO 테이블명 (컬럼1, 컬럼2....)
+            VALUES (값1, 값2, .....);
+    형식2
+        INSERT INTO 테이블명 VALUES 
+            (값1, 값2....컬럼수와 동일하게 입력);
+
+
+
+▣ 레코드 수정하기
+    형식
+    UPDATE  테이블명
+        SET 컬럼1=값1, 컬럼2=값1......컬럼N=값N
+            WHERE 조건1 and 조건2;
+
+단, where절이 없으면 모든 레코드가 수정된다. 
+
+▣ 레코드 삭제하기
+    형식
+        delete from 테이블명 where 조건1 and 조건2;
+
+단, where절이 없으면 모든 레코드가 삭제된다. 
+
+*/
 
 
 

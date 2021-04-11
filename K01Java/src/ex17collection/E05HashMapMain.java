@@ -32,7 +32,6 @@ public class E05HashMapMain {
 	map.put("age", String.valueOf(number));
 	map.put("gender", "남자");
 	map.put("address", "가산디지털단지");
-	
 	//Map에 저장된 객체수 반환
 	System.out.println("저장된 객체수: "+map.size());
 	

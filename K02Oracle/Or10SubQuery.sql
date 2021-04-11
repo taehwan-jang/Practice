@@ -244,5 +244,181 @@ where rNum between 11 and 20;
 필요한 부분을 rownum으로 구간을 정해 인출한다.
 */
 
+--------------------------------------------------------------------------------
+/*
+01.사원번호가 7782인 사원과 담당 업무가 같은 사원을 
+표시(사원이름과 담당 업무)하시오.
+*/
+select job from emp where empno = 7782;
+
+select ename,job from emp where job=
+(select job from emp where empno = 7782);
+
+/*
+02.사원번호가 7499인 사원보다 급여가 많은 사원을 
+표시(사원이름과 담당 업무)하시오.
+*/
+
+select ename,job from emp 
+    where sal>(select sal from emp where empno = 7499);
+
+/*
+03.최소 급여를 받는 사원의 이름, 담당 업무 및 급여를 
+표시하시오(그룹함수 사용).
+*/
+
+select ename,job,sal from emp 
+    where sal=(select min(sal) from emp);
+
+
+/*
+04.평균 급여가 가장 적은 직급(job)과 평균 급여를 표시하시오.
+*/
+
+select round(avg(sal)) as "평균급여",job from emp group by job
+    having round(avg(sal))=
+        (select min(round(avg(sal))) from emp group by job);
+
+
+
+/*
+05.각부서의 최소 급여를 받는 사원의 이름, 급여, 
+부서번호를 표시하시오.
+*/
+
+
+select ename,sal,deptno from emp where (job,sal)in
+(select job,min(sal) from emp group by job)
+order by sal;
+--in을 잊고있었음~~
+
+
+
+
+/*
+06.담당 업무가 분석가(ANALYST)인 사원보다 급여가 적으면서 
+업무가 분석가(ANALYST)가 아닌 사원들을 
+표시(사원번호, 이름, 담당업무, 급여)하시오.
+*/
+
+select deptno, ename, job, sal from emp where sal<(
+select sal from emp where job='ANALYST')
+order by sal;
+
+
+
+/*
+07.부하직원이 없는 사람의 이름을 표시하시오.
+*/
+select ename from emp where empno not in( 
+    select mgr from emp group by mgr 
+        having mgr is not null);
+
+/*
+08.부하직원이 있는 사람의 이름을 표시하시오
+*/
+select ename from emp where empno in ( 
+select mgr from emp);
+/*
+09.BLAKE와 동일한 부서에 속한 사원의 이름과 
+입사일을 표시하는 질의를 작성하시오(단. BLAKE는 제외). 질의를 작성하라는게 뭐야
+*/ 
+select hiredate from 
+(select * from emp where deptno=(
+select deptno from emp where ename = 'BLAKE'))
+where hiredate != (select hiredate from emp where ename = 'BLAKE');
+
+
+
+/*
+10.급여가 평균 급여 보다 많은 사원들의 사원번호와 
+이름을 표시하되 결과를 급여에 대해서 오름차순으로 정렬 하시오.
+*/
+select empno, ename from emp where sal>(
+select round(avg(sal)) from emp)
+order by sal;
+
+/*
+11.이름에 K가 포함된 사원과 같은 부서에서 일하는 
+사원의 사원번호와 이름을 표시하는 질의를 작성하시오
+*/
+select empno, ename from emp where deptno in
+(select deptno from emp where ename like '%K%');
+
+
+
+/*
+12.부서 위치가 DALLAS인 사원의 이름과 부서번호 및 담당 업무를 표시하시오.
+*/
+
+select ename,deptno,job from emp 
+    inner join dept using(deptno) 
+        where loc='DALLAS';
+        
+select ename,deptno,job from emp 
+    where deptno=(select DISTINCT(deptno) from emp 
+    inner join dept using(deptno) 
+        where loc='DALLAS');
+
+/*
+13.KING에게 보고하는 사원의 이름과 급여를 표시하시오.
+*/
+select ename, sal from emp where mgr=
+(select empno from emp where ename = 'KING');
+
+
+/*
+14.RESEARCH 부서의 사원에 대한 부서번호 
+사원이름 및 담당 업무를 표시하시오.
+*/
+select deptno, ename, job from emp 
+    inner join dept using(deptno)
+        where dname = 'RESEARCH';
+
+
+
+/*
+15.평균 급여 보다 많은 급여를 받고 이름에 k가 포함된 
+사원과 같은 부서에서 근무하는 사원의 사원번호, 이름, 급여를 표시하시오.
+*/
+select * from (
+    select * from emp where sal>(
+        select round(avg(sal)) from emp)) 
+    where lower(ename) like '%k%';
+
+
+/*
+16.평균 급여가 가장 적은 업무를 찾으시오.
+*/
+select job from emp group by job 
+    having avg(sal)=(
+        select min(avg(sal)) from emp group by job);
+
+
+/*
+17.담당 업무가 MANAGER인 사원이 소속된 부서와 
+동일한 부서의 사원을 표시하시오.
+*/
+
+select * from emp where deptno in(
+select deptno from emp where job ='MANAGER');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

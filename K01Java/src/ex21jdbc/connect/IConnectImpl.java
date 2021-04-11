@@ -1,10 +1,12 @@
 package ex21jdbc.connect;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 /*
 인터페이스를 구현한 클래스로 extends대신 implements를 사용한다.
@@ -13,7 +15,9 @@ import java.util.Scanner;
 public class IConnectImpl implements IConnect {
 
 	public Connection con;
+	public Statement stmt;
 	public PreparedStatement psmt;//동적쿼리 실행을 위한 객체
+	public CallableStatement csmt;//저장프로시저 실행을 위한 객체
 	public ResultSet rs;
 	//기본생성자(디폴트생성자)
 	public IConnectImpl() {
@@ -66,9 +70,11 @@ public class IConnectImpl implements IConnect {
 	@Override
 	public void close() {
 		try {
+			if(stmt!= null) stmt.close();
 			if(psmt!= null) psmt.close();
+			if(csmt!= null) csmt.close();
 			if(con != null) con.close();
-			if(rs != null) rs.close();
+			if(rs  != null) rs.close();
 			System.out.println("DB자원반납 완료");
 		} 
 		catch (SQLException e) {
