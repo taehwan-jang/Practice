@@ -35,8 +35,8 @@ public class E13MyFriendDeserializable2 {
 			System.out.println("파일을 못찾음");
 		}
 		catch (Exception e) {
-//			System.out.println(e.getMessage());
-//			e.printStackTrace();
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		System.out.println("프로그램끝");
 	}

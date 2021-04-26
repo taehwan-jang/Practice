@@ -119,5 +119,8 @@ public class E03DaemonThread {
 		System.out.println("현재 실행중인 쓰레드:"+Thread.currentThread().getName());
 		System.out.println("메인함수의 우선순위:"+Thread.currentThread().getPriority());
 		System.out.println("메인함수(mainThread)종료");
+		dt.interrupt();
+		System.out.println("현재 활성화된 쓰레드의 수:"+Thread.activeCount());
+		System.out.println("현재 실행중인 쓰레드:"+Thread.currentThread().getName());
 	}
 }

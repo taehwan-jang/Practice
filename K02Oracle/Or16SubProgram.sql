@@ -554,6 +554,112 @@ print insert_count;
 
 select * from member;
 
+-------------------------------------------------------------------------
+/*
+시나리오] member테이블에서 레코드를 삭제하는 프로시저를 생성하시오.
+    매개변수 : In->member_id(아이디)
+               Out->returnVal (성공/실패 반환)
+    Out파라미터 : 삭제성공시 -> 'Success'반환
+                  삭제 실패시 -> 'Fail'반환
+    프로시저명 : KosmoMemberDelete
+*/
+
+create or replace procedure KosmoMemberDelete (
+        memeber_id in varchar2,
+        returnVal out varchar2
+    )
+is --변수가 필요없는경우 생략 가능
+begin
+    --인파라미터를 통해 delete쿼리 작성
+    delete from member where id=memeber_id;
+    
+    --삭제 결과를 sql%found로 판단 후 성공/실패 반환
+    if sql%found then
+        --정상적으로 삭제되는 경우
+        returnVal := 'Success';
+        commit;
+    else
+        --삭제에 실패했을 경우
+        returnVal := 'Fail';
+    end if;
+    --Out파라미터를 통해 반환되므로 return문은 없음
+end;
+/
+var delete_var varchar2(10);
+execute KosmoMemberDelete('ppp1', :delete_var);
+print delete_var;
+
+select * from member;
+
+
+/*
+시나리오] 아이디와 패스워드를 매개변수로 전달받아서 회원인지 여부를
+판단하는 프로시저를 작성하시오.
+
+    매개변수 : 
+        In -> user_id, user_pass
+        Out -> returnVal
+    반환값 :
+        0 -> 회원인증실패(둘다틀림)
+        1 -> 아이디는 일치하나 패스워드가 틀림
+        2 -> 아이디/패스워드 모두 일치 회원인증 ㅋ
+    프로시저명 : KosmoMemberAuth
+*/
+create or replace procedure KosmoMemberAuth(
+    user_id in varchar2,
+    user_pass in varchar2,
+    returnVal out number
+)
+is
+    --count(*)를 통해 반환되는 값을 저장
+    member_count number(1) := 0;
+    --조회한 회원정보의 패스워드를 저장할 변수
+    member_pw varchar2(50);
+begin
+    --해당 아이디가 존재하는지 판단
+    select count(*) into member_count
+        from member where id=user_id;
+        
+    if member_count =1 then
+        --회원아이디가 존재하는 경우
+        
+        --패스워드 확인을 위해 두번째 쿼리 실행
+        select pass into member_pw from member
+            where id=user_id;
+        --패스워드 일치여부 판단
+        if member_pw=user_pass then
+            returnVal := 2;
+        else
+            returnVal := 1;
+        end if;
+    else
+        --회원아이디가 없는경우
+        returnVal := 0;
+    end if;
+        
+end;
+/
+--하나도 일치 X
+var member_auth number;
+execute KosmoMemberAuth('iuiud','1234', :member_auth);
+print member_auth;
+
+--둘 다 일치
+execute KosmoMemberAuth('test1','1111', :member_auth);
+print member_auth;
+
+--아이디만 일치
+execute KosmoMemberAuth('test1','2111', :member_auth);
+print member_auth;
+
+
+
+
+
+
+
+
+
 
 
 

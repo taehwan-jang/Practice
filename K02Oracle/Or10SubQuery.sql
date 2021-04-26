@@ -270,16 +270,25 @@ select ename,job from emp
 select ename,job,sal from emp 
     where sal=(select min(sal) from emp);
 
-
 /*
 04.평균 급여가 가장 적은 직급(job)과 평균 급여를 표시하시오.
 */
-
+select * from emp group by job;/*
+    오류발생 : group by로 그룹화한 데이터에서 그룹함수를
+    통한 결과 이외의 값은 출력이 애매하므로
+    오류가 발생하게 된다.
+*/
+--오류발생됨(ORA-00937: not a single-group group function)
+select job,min(round(avg(sal))) from emp group by job;
+--select절에서 job을 제외하고 출력
+select min(round(avg(sal))) from emp group by job;
+/*
+    평균급여는 물리적으로 존재하는 컬럼이 아니므로
+    where 절이 아닌 having절에 조건을 걸 수 있다.
+*/
 select round(avg(sal)) as "평균급여",job from emp group by job
     having round(avg(sal))=
         (select min(round(avg(sal))) from emp group by job);
-
-
 
 /*
 05.각부서의 최소 급여를 받는 사원의 이름, 급여, 
@@ -342,9 +351,13 @@ order by sal;
 11.이름에 K가 포함된 사원과 같은 부서에서 일하는 
 사원의 사원번호와 이름을 표시하는 질의를 작성하시오
 */
-select empno, ename from emp where deptno in
+select empno, ename, deptno from emp where deptno in
 (select deptno from emp where ename like '%K%');
-
+/*
+    or 조건을 in으로 변경할 수 있으므로, 서브쿼리에서 복수행
+    연산에 in을 사용한다. 2개 이상의 결과를 or로 연결하여
+    출력하는 효과를 가진다.
+*/
 
 
 /*
@@ -371,7 +384,7 @@ select ename, sal from emp where mgr=
 14.RESEARCH 부서의 사원에 대한 부서번호 
 사원이름 및 담당 업무를 표시하시오.
 */
-select deptno, ename, job from emp 
+select deptno, ename, job from emp  
     inner join dept using(deptno)
         where dname = 'RESEARCH';
 

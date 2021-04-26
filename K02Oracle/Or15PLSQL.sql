@@ -858,7 +858,9 @@ end;
 출력예] 이름이 ‘Ismael’ 라면 ###### 형태로 출력된다.
 
 */
+select * from emp;
 declare 
+    --치환연산자를 통해 입력받을 사원번호
     I_empno emp.empno%type:= &I_empno;
     I_ename emp.ename%type;
     star varchar2(100);
@@ -867,10 +869,9 @@ begin
     select ename 
         into I_ename
     from emp where empno=I_empno;
-    
+    --줄바꿈 없이 출력하기 위해 star에 '#'을 누적해서 더한다.
     for i in 1 .. length(I_ename) loop
         star := star||'#';
-        lpad rpad
     end loop;
     dbms_output.put_line(star);
 end;
@@ -918,13 +919,13 @@ end;
 declare
     dan number := 2;
     su number := 1;
-    guguStr2 varchar2(2000);
+    guguStr2 varchar2;--변수선언시 왜 크기 지정을 안하면 에러?
 begin
     loop
     exit when (dan>9);
     dbms_output.put_line('['||dan||'단]');
         loop
-            exit when (su > 9);
+        exit when (su > 9);
             guguStr2 := guguStr2 ||(' '||dan || '*' || su || '=' || dan*su|| '|');
             su:= su + 1;
         end loop;
@@ -936,6 +937,27 @@ begin
 end;
 /
 
+declare
+    dan number := 2;
+    su number := 1;
+    guguStr2 varchar2(80);--변수선언시 왜 크기 지정을 안하면 에러?
+begin
+    loop
+    exit when (dan>9);--when문을 통한 탈출조건
+    dbms_output.put_line('['||dan||'단]');
+        loop
+            guguStr2 := guguStr2 ||(' '||dan || '*' || su || '=' || dan*su|| '|');
+            su:= su + 1;
+            if su>9 then
+                exit;--if문을 통한 탈출조건
+        end loop;
+        dbms_output.put_line(guguStr2);
+        guguStr2 :='';
+        dan := dan + 1;
+        su := 1;
+    end loop;
+end;
+/
 /*
 3. while loop문으로 다음과 같은 결과를 출력하시오.
 *
@@ -962,6 +984,22 @@ begin count += 1;
     end loop;
 end;
 /
+
+declare
+    num1 number := 1;
+    starStr varchar2(10);
+begin
+    /*
+     *를 출력한 후 초기화 하지 않으므로 하나의
+     while문으로 구현이 가능하다.
+    */
+    while num1<=5 loop
+        starStr := starStr||'*';
+        dbms_output.put_line(starStr);
+        num1 := num1+1;
+    end loop;
+end;
+/
 /*
 4. for loop문으로 다음과 같은 결과를 출력하시오.
 1 0 0 0 0
@@ -973,12 +1011,12 @@ end;
 declare
     forStr varchar2(100);
 begin
-    for num1 in 0 .. 5 loop
-        for num2 in 0..5 loop
+    for num1 in 1 .. 5 loop
+        for num2 in 1..5 loop
             if num1=num2 then
-                forStr := forStr||'1';
+                forStr := forStr||'1 ';
             else
-                forStr := forStr||'0';
+                forStr := forStr||'0 ';
             end if;
         end loop;
         dbms_output.put_line(forStr);
@@ -997,15 +1035,18 @@ end;
 ----------------------------
 만약 KING을 입력했다면 부서번호는 10, 부서명은 ACCOUNTING이 출력되면 된다.
 */
-declare
-    inputN employees.last_name%type := '&inputN';
+
+select * from emp;
+declare 
+    --치환연산자를 통해 입력받을때 문자열이면 ''를 붙여줘야 한다.
+    inputN emp.ename%type := '&inputN';
     dept_name varchar(50) := '그외 부서';
-    dept_id employees.department_id%type;
+    dept_id emp.deptno%type;
 begin
-    select department_id 
+    select deptno 
         into dept_id
-    from employees
-    where upper(last_name)=upper(inputN);
+    from emp
+    where upper(ename)=upper(inputN);
     
     if dept_id = 10 then
         dept_name := 'ACCOUNTING';
@@ -1016,12 +1057,27 @@ begin
     elsif dept_id = 40 then
         dept_name := 'OPERATIONS';
     end if;
-        
-    dbms_output.put_line(dept_name);
+    dbms_output.put_line('부서번호:'||dept_id);    
+    dbms_output.put_line('부서이름:'||dept_name);
 end;
 /
-   
-
+select * from emp;
+--inner join을 통한 PL/SQL 작성
+declare 
+    --치환연산자를 통해 입력받을때 문자열이면 ''를 붙여줘야 한다.
+    inputN emp.ename%type := '&inputN';
+    dept_name varchar(50) := '그외 부서';
+    dept_id emp.deptno%type;
+begin
+    select deptno, dname
+        into dept_id, dept_name
+    from emp inner join dept using(deptno)
+    where upper(ename)=upper(inputN);
+    
+    dbms_output.put_line('부서번호:'||dept_id);    
+    dbms_output.put_line('부서이름:'||dept_name);
+end;
+/
 
 
 

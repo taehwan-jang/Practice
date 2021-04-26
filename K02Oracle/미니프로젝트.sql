@@ -132,11 +132,10 @@ begin
             :old.goods_name,
             :old.g_idx,'Delete');
     end if;
-    commit;
 end;
 /
 select * from user_triggers where trigger_name like upper('%shop_log_trigger%');
 select * from sh_goods_log;
 ------------------------------추가/삭제 트리거 생성-----------------------------
-
+select * from sh_goods;
 
